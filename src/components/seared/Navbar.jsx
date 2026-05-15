@@ -44,7 +44,7 @@ export default function Navbar() {
               )}
             </svg>
           </button>
-          <div className="text-xl md:text-3xl lg:text-4xl font-bold text-green-950">
+          <div className="text-xl md:text-2xl lg:text-3xl font-bold text-green-950">
             Tech P.
           </div>
         </div>
