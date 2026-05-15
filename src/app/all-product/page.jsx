@@ -5,7 +5,7 @@ const page = async () => {
   const products = await getAllProducts();
 
   return (
-    <div className="w-[90%] md:container mx-auto mt-20 ">
+    <div className="w-[90%] md:container mx-auto mt-20 mb-15">
       <h1 className="text-xl md:text-4xl font-bold">All Products</h1>
 
       {/* all products */}
