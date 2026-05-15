@@ -22,14 +22,14 @@ const page = async ({ params }) => {
   } = product;
   // console.log(product);
 
-  const extraPrice = price + Math.floor(Math.random() * 100);
+  const extraPrice = price + Math.floor(Math.random() * 50);
   console.log(extraPrice);
 
   return (
-    <div className="w-[90%] md:container mx-auto my-20 ">
+    <div className="w-[90%] md:container space-y-3 mx-auto my-20 ">
       <div className=" flex items-center justify-end gap-4">
         <small className="text-gray-400">(This will be show only Admin)</small>
-        <EditModalForm />
+        <EditModalForm product={product} />
         <Button className={"rounded-xs"} variant="danger">
           Delete
         </Button>
