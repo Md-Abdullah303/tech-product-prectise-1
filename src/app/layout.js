@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/seared/Navbar";
+import Footer from "@/components/seared/Footer";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <Navbar />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

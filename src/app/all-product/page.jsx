@@ -1,9 +1,8 @@
 import ProductCard from "@/components/UI/ProductCard";
+import getAllProducts from "@/lib/productsData/data";
 
 const page = async () => {
-  const res = await fetch("http://localhost:8000/product");
-  const products = await res.json();
-  //   console.log(data);
+  const products = await getAllProducts();
 
   return (
     <div className="w-[90%] md:container mx-auto mt-20 ">

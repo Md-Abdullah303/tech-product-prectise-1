@@ -45,7 +45,7 @@ export default function Navbar() {
             </svg>
           </button>
           <div className="text-xl md:text-2xl lg:text-3xl font-bold text-green-950">
-            Tech P.
+            Techlust
           </div>
         </div>
         <ul className="hidden items-center gap-4 md:flex">
