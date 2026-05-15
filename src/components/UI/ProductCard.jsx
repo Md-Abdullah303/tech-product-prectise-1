@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
       <div className="space-y-2.5 flex-1 flex flex-col">
         {/* info */}
         <div className="flex flex-col items-start gap-2.5">
-          <h1 className="text-2xl font-bold ">{title}</h1>
+          <h1 className="text-2xl font-bold line-clamp-1">{title}</h1>
           <h2 className="text-xl font-semibold text-green-500">${price}</h2>
           <p className="text-gray-400 line-clamp-3">{description}</p>
         </div>

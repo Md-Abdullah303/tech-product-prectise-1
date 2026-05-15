@@ -9,6 +9,7 @@ export default function Navbar() {
     { name: "Home", path: "/" },
     { name: "All Product", path: "/all-product" },
     { name: "Add Product", path: "/add-product" },
+    { name: "My Card", path: "/my-card" },
   ];
 
   return (

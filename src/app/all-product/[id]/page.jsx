@@ -1,3 +1,4 @@
+import { EditModalForm } from "@/components/Modal/EditModal";
 import { getProductById } from "@/lib/productsData/data";
 import { Button, Card, Chip } from "@heroui/react";
 import Image from "next/image";
@@ -26,6 +27,13 @@ const page = async ({ params }) => {
 
   return (
     <div className="w-[90%] md:container mx-auto my-20 ">
+      <div className=" flex items-center justify-end gap-4">
+        <small className="text-gray-400">(This will be show only Admin)</small>
+        <EditModalForm />
+        <Button className={"rounded-xs"} variant="danger">
+          Delete
+        </Button>
+      </div>
       <Card className="rounded-lg p-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="">
