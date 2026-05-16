@@ -1,8 +1,31 @@
-import React from "react";
+"use client";
+
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
 
 const Banner = () => {
+  const bannerRef = useRef();
+
+  useEffect(() => {
+    const animation = () => {
+      const element = bannerRef.current;
+
+      gsap.to(element, {
+        y: -10,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+      });
+    };
+    animation();
+  }, []);
+
   return (
-    <div className="bg-[url(https://images.unsplash.com/photo-1511707171634-5f897ff02aa9)] bg-no-repeat bg-center mt-20 py-45 px-20 rounded-lg relative">
+    <div
+      ref={bannerRef}
+      className="bg-[url(https://images.unsplash.com/photo-1505740420928-5e560c06d30e)] font-henny-penny bg-no-repeat bg-cover bg-center mt-20 py-45 px-20 rounded-lg relative"
+    >
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/75 rounded-lg "></div>
 

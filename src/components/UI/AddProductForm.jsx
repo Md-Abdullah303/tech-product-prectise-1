@@ -200,7 +200,7 @@ const AddProductForm = () => {
           variant="outline"
           className=" rounded-none w-full "
         >
-          Edit
+          Add Product
         </Button>
       </form>
     </div>

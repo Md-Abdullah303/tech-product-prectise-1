@@ -16,6 +16,7 @@ const SignUpForm = () => {
   const [showPass, setShowPass] = useState(false);
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log("sign was st");
 
     const formData = new FormData(e.target);
     const userData = Object.fromEntries(formData.entries());
