@@ -5,11 +5,11 @@ import React from "react";
 
 const ProductCard = ({ product }) => {
   const { _id, title, description, image, price, rating } = product;
-  console.log(product);
+  // console.log(product);
   return (
     <Card className="border rounded-lg p-3 space-y-3 flex flex-col items-start h-full">
       {/* card img */}
-      <div className="relative w-full">
+      <div className="relative w-full h-60 overflow-hidden">
         <Image
           src={image}
           alt={title}

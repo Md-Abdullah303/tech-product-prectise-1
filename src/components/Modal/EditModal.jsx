@@ -12,11 +12,11 @@ import {
   Surface,
   TextArea,
   TextField,
-  toast,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export function EditModalForm({ product }) {
   const [open, setOpen] = useState(false);

@@ -1,3 +1,4 @@
+import { DeleteModal } from "@/components/Modal/DeleteModal";
 import { EditModalForm } from "@/components/Modal/EditModal";
 import { getProductById } from "@/lib/productsData/data";
 import { Button, Card, Chip } from "@heroui/react";
@@ -30,9 +31,7 @@ const page = async ({ params }) => {
       <div className=" flex items-center justify-end gap-4">
         <small className="text-gray-400">(This will be show only Admin)</small>
         <EditModalForm product={product} />
-        <Button className={"rounded-xs"} variant="danger">
-          Delete
-        </Button>
+        <DeleteModal product={product} />
       </div>
       <Card className="rounded-lg p-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -42,7 +41,7 @@ const page = async ({ params }) => {
               alt={title}
               width={4000}
               height={2000}
-              className="w-full h-auto rounded-lg object-center object-cover border"
+              className="w-full h-120 rounded-lg object-center object-cover border"
             />
           </div>
 
