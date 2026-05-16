@@ -21,6 +21,8 @@ const page = async ({ params }) => {
     description,
     availableQuantity,
   } = product;
+
+  const handleAddToCard = async () => {};
   // console.log(product);
 
   const extraPrice = price + Math.floor(Math.random() * 50);
@@ -85,9 +87,16 @@ const page = async ({ params }) => {
               </div>
             </div>
 
-            <Button variant="outline" className={"w-full rounded-none"}>
-              Add to Cart
-            </Button>
+            {/* btns grp */}
+            <div className="grid grid-cols-2 gap-2 ">
+              <Button variant="outline" className={"w-full rounded-none"}>
+                Add to Cart
+              </Button>
+
+              <Button variant="primary" className={"w-full rounded-none"}>
+                Buy Now
+              </Button>
+            </div>
           </div>
         </div>
       </Card>

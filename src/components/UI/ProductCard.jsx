@@ -1,4 +1,5 @@
-import { Button, Card, Chip } from "@heroui/react";
+import { Bookmark, Heart } from "@gravity-ui/icons";
+import { Button, Card, Chip, ToggleButton } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -26,25 +27,31 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* card info */}
-      <div className="space-y-2.5 flex-1 flex flex-col">
+      <div className="space-y-2.5 w-full flex-1 flex flex-col">
         {/* info */}
-        <div className="flex flex-col items-start gap-2.5">
+        <div className="flex w-full  flex-col items-start gap-2.5">
           <h1 className="text-2xl font-bold line-clamp-1">{title}</h1>
-          <h2 className="text-xl font-semibold text-green-500">${price}</h2>
+          <div className="flex items-start justify-between gap-4 w-full">
+            <h2 className="text-xl font-semibold text-green-500">${price}</h2>
+            <div className="flex items-center gap-3">
+              <ToggleButton isIconOnly aria-label="Like">
+                <Heart />
+              </ToggleButton>
+              <ToggleButton isIconOnly aria-label="Bookmark" variant="ghost">
+                <Bookmark />
+              </ToggleButton>
+            </div>
+          </div>
           <p className="text-gray-400 line-clamp-3">{description}</p>
         </div>
 
         {/* btns grp */}
-        <div className="mt-auto w-full grid grid-cols-2 gap-2">
+        <div className="mt-auto w-full ">
           <Link href={`/all-product/${_id}`}>
             <Button variant="outline" className={"w-full rounded-none"}>
               View Details
             </Button>
           </Link>
-
-          <Button variant="primary" className={"w-full rounded-none"}>
-            Add to Cart
-          </Button>
         </div>
       </div>
     </Card>
