@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -8,19 +9,38 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 const SignUpForm = () => {
+  const router = useRouter();
   const [showPass, setShowPass] = useState(false);
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log("sign was st");
 
     const formData = new FormData(e.target);
     const userData = Object.fromEntries(formData.entries());
-    console.log(userData);
+    // console.log("userData", userData);
+
+    const { data, error } = await authClient.signUp.email({
+      name: userData.name, // required
+      email: userData.email, // required
+      password: userData.password, // required
+      image: userData.image,
+      callbackURL: "/",
+    });
+
+    if (data) {
+      router.push("/");
+      router.refresh("/");
+      toast.success("Sign Up successfully");
+    } else if (error) {
+      toast.error(error?.message);
+    }
   };
 
   return (

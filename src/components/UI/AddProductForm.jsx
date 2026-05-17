@@ -25,7 +25,7 @@ const AddProductForm = () => {
 
     const formData = new FormData(e.target);
     const newProduct = Object.fromEntries(formData.entries());
-    console.log(newProduct);
+    console.log("newProduct", newProduct);
 
     // console.log(e.target.title.value);
 
@@ -37,6 +37,7 @@ const AddProductForm = () => {
       body: JSON.stringify(newProduct),
     });
 
+    console.log(res, "res");
     if (res.ok) {
       router.push("/all-product");
       toast.success("Product added successfully!");

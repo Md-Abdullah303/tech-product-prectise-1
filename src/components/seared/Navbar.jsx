@@ -1,9 +1,17 @@
 "use client";
 import { useState } from "react";
-import { Link, Button } from "@heroui/react";
+import { Link, Button, Avatar } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
 
 export default function Navbar() {
+  const {
+    data: session,
+    isPending, //loading state
+  } = authClient.useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const userData = session?.user;
+  // console.log(userData);
 
   const tabs = [
     { name: "Home", path: "/" },
@@ -60,12 +68,37 @@ export default function Navbar() {
         </div>
         <div className="hidden md:flex">
           <ul className="hidden items-center gap-4 md:flex">
-            <li>
-              <Link href={"signin"}>SignIn</Link>
-            </li>
-            <li>
-              <Link href={"signup"}>SignUp</Link>
-            </li>
+            {isPending ? (
+              "Loading..."
+            ) : userData ? (
+              <>
+                <h1>{userData?.name}</h1>
+                <Link href={"/profile"}>
+                  <Avatar>
+                    <Avatar.Image alt={userData?.name} src={userData?.image} />
+                    <Avatar.Fallback>
+                      {userData?.name[0].toUpperCase()}
+                    </Avatar.Fallback>
+                  </Avatar>
+                </Link>
+                <Button
+                  className={"rounded-xs"}
+                  onClick={async () => await authClient.signOut()}
+                  variant="danger"
+                >
+                  Log out
+                </Button>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link href={"signin"}>SignIn</Link>
+                </li>
+                <li>
+                  <Link href={"signup"}>SignUp</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </header>

@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -12,12 +13,26 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 
 const SignInForm = () => {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
     const userData = Object.fromEntries(formData.entries());
     console.log(userData);
+
+    const { data, error } = await authClient.signIn.email({
+      email: userData.email, // required
+      password: userData.password, // required
+      callbackURL: "/",
+    });
+
+    if (data) {
+      // router.push("/");
+      // router.refresh("/");
+      toast.success("Sign in successfully");
+    } else if (error) {
+      toast.error(error?.message);
+    }
   };
 
   return (

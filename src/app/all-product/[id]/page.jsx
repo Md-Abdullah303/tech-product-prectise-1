@@ -1,12 +1,19 @@
 import { DeleteModal } from "@/components/Modal/DeleteModal";
 import { EditModalForm } from "@/components/Modal/EditModal";
+import AddToCartBtn from "@/components/UI/AddToCartBtn";
+import { auth } from "@/lib/auth";
 import { getProductById } from "@/lib/productsData/data";
 import { Button, Card, Chip } from "@heroui/react";
+import { headers } from "next/headers";
 import Image from "next/image";
 import React from "react";
 import { TbMathGreater } from "react-icons/tb";
 
 const page = async ({ params }) => {
+  const session = await auth.api.getSession({
+    headers: await headers(), // you need to pass the headers object.
+  });
+  const userData = session?.user;
   const { id } = await params;
 
   const product = await getProductById(id);
@@ -22,11 +29,10 @@ const page = async ({ params }) => {
     availableQuantity,
   } = product;
 
-  const handleAddToCard = async () => {};
-  // console.log(product);
+  // console.log(product._id);
 
   const extraPrice = price + Math.floor(Math.random() * 50);
-  console.log(extraPrice);
+  // console.log(extraPrice);
 
   return (
     <div className="w-[90%] md:container space-y-3 mx-auto my-20 ">
@@ -89,9 +95,7 @@ const page = async ({ params }) => {
 
             {/* btns grp */}
             <div className="grid grid-cols-2 gap-2 ">
-              <Button variant="outline" className={"w-full rounded-none"}>
-                Add to Cart
-              </Button>
+              <AddToCartBtn userData={userData} product={product} />
 
               <Button variant="primary" className={"w-full rounded-none"}>
                 Buy Now
