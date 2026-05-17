@@ -10,13 +10,18 @@ import React from "react";
 import { TbMathGreater } from "react-icons/tb";
 
 const page = async ({ params }) => {
+  // get token for client side
+  // const { data:token, error } = await authClient.token();
+  const { token } = await auth.api.getToken({
+    headers: await headers(), // you need to pass the headers object.
+  });
   const session = await auth.api.getSession({
     headers: await headers(), // you need to pass the headers object.
   });
   const userData = session?.user;
   const { id } = await params;
 
-  const product = await getProductById(id);
+  const product = await getProductById(id, token);
   const {
     _id,
     warranty,
@@ -29,7 +34,7 @@ const page = async ({ params }) => {
     availableQuantity,
   } = product;
 
-  // console.log(product._id);
+  // console.log(token);
 
   const extraPrice = price + Math.floor(Math.random() * 50);
   // console.log(extraPrice);
